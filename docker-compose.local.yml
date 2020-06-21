@@ -1,0 +1,33 @@
+version: '3.1'
+
+services:
+    postgres:
+      image: postgres
+      restart: always
+      environment:
+        POSTGRES_USER: store
+        POSTGRES_PASSWORD: store
+        POSTGRES_DATABASE: store
+        POSTGRES_ROOT_PASSWORD: store
+        pgdata: data-pstgresql
+      ports:
+      - "5432:5432"
+      volumes:
+      - data-pstgresql:/data
+      - ./database:/docker-entrypoint-initdb.d
+
+    redis:
+      image: bitnami/redis:latest
+      restart: always
+      environment:
+        # ALLOW_EMPTY_PASSWORD is recommended only for development.
+        - ALLOW_EMPTY_PASSWORD=yes
+        - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+      ports:
+        - '6379:6379'
+      volumes:
+        - redis_data:/redis/data'
+
+volumes:
+    data-pstgresql:
+    redis_data:
