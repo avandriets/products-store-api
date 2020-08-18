@@ -54,7 +54,7 @@ export class ProductsService {
         err.statusCode = 500;
       }
 
-      throw err.statusCode !== 500 ? new BadRequestException(err) : new BadGatewayException();
+      throw err.statusCode !== 500 ? new BadRequestException(err) : new BadGatewayException(err);
     }
 
   }
@@ -79,7 +79,7 @@ export class ProductsService {
         err.statusCode = 500;
       }
 
-      throw err.statusCode !== 500 ? new BadRequestException(err) : new BadGatewayException();
+      throw err.statusCode !== 500 ? new BadRequestException(err) : new BadGatewayException(err);
     }
 
   }

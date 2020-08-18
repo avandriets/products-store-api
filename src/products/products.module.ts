@@ -13,7 +13,10 @@ import { Product } from './models/product.model';
   ],
   controllers: [
     ProductsController,
-  ]
+  ],
+  exports: [
+    SequelizeModule,
+  ],
 })
 export class ProductsModule {
 }

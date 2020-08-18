@@ -4,10 +4,13 @@ import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Product } from './products/models/product.model';
+import { CategoriesModule } from './categories/categories.module';
+import { Category } from './categories/models/categories.model';
 
 @Module({
   imports: [
     ProductsModule,
+    CategoriesModule,
     SequelizeModule.forRoot({
       dialect: 'postgres',
       host: process.env.DB_HOST || 'localhost',
@@ -18,6 +21,7 @@ import { Product } from './products/models/product.model';
       ssl: process.env.DB_SSL === 'true',
       models: [
         Product,
+        Category,
       ],
     }),
   ],
