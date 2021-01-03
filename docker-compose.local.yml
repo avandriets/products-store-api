@@ -1,20 +1,20 @@
 version: '3.1'
 
 services:
-#    keycloak:
-#      container_name: 'keycloak-products'
-#      build:
-#        context: ./keycloak
-#      restart: always
-#      environment:
-#        DB_VENDOR: h2
-#        KEYCLOAK_USER: admin
-#        KEYCLOAK_PASSWORD: admin
-#      ports:
-#        - '18080:8080'
-#        - '18443:8443'
-#      volumes:
-#        - products-keycloak:/data
+    keycloak:
+      container_name: 'keycloak-products'
+      build:
+        context: ./keycloak
+      restart: always
+      environment:
+        DB_VENDOR: h2
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: admin
+      ports:
+        - '18080:8080'
+        - '18443:8443'
+      volumes:
+        - products-keycloak:/data
 
     postgres:
       image: postgres
@@ -46,4 +46,4 @@ services:
 volumes:
     data-pstgresql:
     redis_data:
-#    products-keycloak:
+    products-keycloak:
