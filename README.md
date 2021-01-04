@@ -26,3 +26,9 @@ $ npm run start:prod
 $ docker-compose -f docker-compose.local.yml up
 
 ```
+
+## Keycloak credentials
+
+user: test
+
+password: 12345
