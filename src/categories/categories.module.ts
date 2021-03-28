@@ -6,7 +6,9 @@ import { Category } from './models/categories.model';
 
 @Module({
   imports: [
-    SequelizeModule.forFeature([Category])
+    SequelizeModule.forFeature([
+      Category,
+    ]),
   ],
   providers: [
     CategoriesService,

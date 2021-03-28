@@ -1,4 +1,9 @@
-import { BadGatewayException, BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadGatewayException,
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { FindAndCountOptions } from 'sequelize';
 import { Category } from '../models/categories.model';
@@ -9,8 +14,7 @@ import { removeFalsyValues } from '../../utils';
 export class CategoriesService {
 
   public constructor(
-    @InjectModel(Category)
-    private categoryModel: typeof Category,
+    @InjectModel(Category) private categoryModel: typeof Category,
   ) {
   }
 
@@ -46,7 +50,7 @@ export class CategoriesService {
   public async createCategory(payload: CategoryInterface): Promise<Category> {
 
     try {
-      const category = await this.categoryModel.create(payload);
+      const category = await this.categoryModel.create({ ...payload } as Category);
 
       return category;
     } catch (err) {

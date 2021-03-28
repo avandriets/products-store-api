@@ -1,27 +1,29 @@
-import { Column, CreatedAt, HasMany, Model, Table, UpdatedAt } from 'sequelize-typescript';
+import {
+  Column,
+  CreatedAt,
+  Model,
+  Table,
+  UpdatedAt,
+} from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
 import { UUIDV4 } from 'sequelize';
-import { Product } from '../../products/models/product.model';
 
-@Table({ timestamps: true, modelName: 'categories' })
+@Table({ timestamps: true })
 export class Category extends Model<Category> {
 
   @Column({ primaryKey: true, type: DataTypes.UUID, defaultValue: UUIDV4 })
-  id: string;
+  public id: string;
 
   @Column({ type: DataTypes.STRING, allowNull: false, validate: { len: [1, 200] } })
-  name: string;
+  public name: string;
 
   @Column({ type: DataTypes.STRING, allowNull: true, validate: { len: [0, 500] } })
-  description: string;
-
-  @HasMany(() => Product)
-  products: Product[];
+  public description: string;
 
   @CreatedAt
-  created_at: Date;
+  public created_at: Date;
 
   @UpdatedAt
-  updated_at: Date;
+  public updated_at: Date;
 
 }
