@@ -9,6 +9,7 @@ import { Product } from './products/models/product.model';
 import { CategoriesModule } from './categories/categories.module';
 import { Category } from './categories/models/categories.model';
 import { ConfigModule } from '@nestjs/config';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -46,6 +47,8 @@ import { ConfigModule } from '@nestjs/config';
         new transports.File({ filename: `${process.env.VOLUME_PATH || ''}warehouse.log`, maxsize: 300000 }),
       ],
     }),
+
+    EventsModule,
 
   ],
   controllers: [

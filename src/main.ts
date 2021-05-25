@@ -8,6 +8,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api/v1');
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
+  app.enableCors();
 
   const options = new DocumentBuilder()
     .addBearerAuth()
