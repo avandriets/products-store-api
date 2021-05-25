@@ -9,7 +9,7 @@ import { DataTypes } from 'sequelize';
 import { UUIDV4 } from 'sequelize';
 
 @Table({ timestamps: true })
-export class Category extends Model<Category> {
+export class Category extends Model {
 
   @Column({ primaryKey: true, type: DataTypes.UUID, defaultValue: UUIDV4 })
   public id: string;
