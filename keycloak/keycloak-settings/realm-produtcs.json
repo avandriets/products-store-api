@@ -44,7 +44,7 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "QY8agVUaC6Y8Or0nesnrbMHOHEmzOEFT",
       "redirectUris": [
-        "http://localhost:4200/*"
+        "http://localhost:5555/*"
       ],
       "webOrigins": [
         "*"
