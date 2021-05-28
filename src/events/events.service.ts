@@ -7,7 +7,7 @@ export class EventsService {
   constructor(private readonly serverGateWay: EventsGateway) {
   }
 
-  public dispatch(message: string): void {
+  public dispatch(message: any): void {
     this.serverGateWay.dispatchMessage(message);
   }
 

@@ -9,12 +9,14 @@ import { FindAndCountOptions } from 'sequelize';
 import { Category } from '../models/categories.model';
 import { CategoryInterface } from '../interfaces';
 import { removeFalsyValues } from '../../utils';
+import { EventsService } from '../../events/events.service';
 
 @Injectable()
 export class CategoriesService {
 
   public constructor(
-    @InjectModel(Category) private categoryModel: typeof Category,
+    @InjectModel(Category) private readonly categoryModel: typeof Category,
+    private readonly eventsService: EventsService,
   ) {
   }
 
@@ -51,6 +53,7 @@ export class CategoriesService {
 
     try {
       const category = await this.categoryModel.create({ ...payload } as Category);
+      this.eventsService.dispatch(category);
 
       return category;
     } catch (err) {

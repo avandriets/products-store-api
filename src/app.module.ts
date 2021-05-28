@@ -10,11 +10,15 @@ import { CategoriesModule } from './categories/categories.module';
 import { Category } from './categories/models/categories.model';
 import { ConfigModule } from '@nestjs/config';
 import { EventsModule } from './events/events.module';
+import { DocumentsModule } from './documents/documents.module';
+import { IncomingOrder } from './documents/models/orders/incoming.order';
+import { IncomingTableOrder } from './documents/models/orders/incoming.table.order';
 
 @Module({
   imports: [
     ProductsModule,
     CategoriesModule,
+    DocumentsModule,
 
     ConfigModule.forRoot({
       isGlobal: true,
@@ -34,6 +38,8 @@ import { EventsModule } from './events/events.module';
       models: [
         Category,
         Product,
+        IncomingOrder,
+        IncomingTableOrder,
       ],
     }),
     WinstonModule.forRoot({

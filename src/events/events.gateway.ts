@@ -14,20 +14,19 @@ export class EventsGateway {
   private clients: Map<string, string> = new Map();
 
   public handleConnection(client: Client, ...args: any[]): any {
-    const clientId = client.conn.request?.['_query']?.clientId;
+    const user = client.conn.request?.['_query']?.user;
 
-    console.log('## request ##', client.conn.request);
-    console.log('## connected client ##', clientId);
-    console.log('## args ##', args);
+    console.log('## connected client ##', user, client.id);
 
-    this.clients.set(client.id, clientId);
+    this.clients.set(client.id, user);
   }
 
   public handleDisconnect(client: any): any {
+    console.log('## DISCONNECT ##', client.id);
     this.clients.delete(client.id);
   }
 
-  public dispatchMessage(message: string): void {
+  public dispatchMessage(message: any): void {
 
     this.clients.forEach((accId, clientId) => {
 
